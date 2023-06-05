@@ -187,7 +187,6 @@ m = 10 // zmiana wartości zmiennej m
 load("wynik.mat") // wczytanie zmiennych z pliku wyniki.mat
 disp(k, m) // sprawdzenie wartości zmiennych
 
-/*
 // zad_35 [wyświetl katalog bieżący, jego zawartość (pwd, dir);
 // zmień katalog bieżący (cd); utwórz podkatalog TESTY (md) i uczyń
 // go katalogiem bieżącym; utwórz zmienne x=12, y=14 i zapisz je
@@ -198,11 +197,11 @@ disp(k, m) // sprawdzenie wartości zmiennych
 disp(pwd()) // wyświetlenie obecnego katalogu
 disp(dir()) // wyświetlenie zawartości katalogu
 
-cd("C:/Users/luqasz/Desktop") // zmiana katalogu bierzącego [opcja nr 1]
+// cd("C:/Users/luqasz/Desktop") // zmiana katalogu bierzącego [opcja nr 1]
 // przy opcji nr1  musi być wpisana prawidłowa nazwa użytkownika komputera
 // cd("C:/Users/NazwaUzytkownika/Desktop") - zamiast słowa NazwaUzytkownika
 // należy wpisać swoją własną nazwę użytkownika na komputerze
-//cd("C:") // zmiana katalogu bierzącego [opcja nr 2]
+// cd("C:") // zmiana katalogu bierzącego [opcja nr 2]
 
 // sprawdzenie czy istnieje już katalog TESTY, a jeśli nie to
 // utworzenie w nowej lokalizacji podkatalogu TESTY
@@ -217,6 +216,7 @@ x=12, y=14 // utworzenie zmiennych x=12 i y=14
 // bądź jeśli nie isnieje plik to wtedy utworzenie nowego
 // pliku dane.bin, a następnie zapisanie zmiennych
 // w katalogu w pliku binarnyum dane.bin
+/*
 if fileinfo("dane.bin") then
     mput([x, y], "dane.bin", "int8");
 else
@@ -227,20 +227,24 @@ else
     mput([x, y], fileID);
     mclose(fileID);
 end
+*/
 
-//mput([x, y], "dane.bin", "int8") // zapisanie zmiennych z i y
+save("dane.bin", "x", "y") // zapisanie zmiennych z i y
 // w katalogu w pliku binarnyum dane.bin [krótka wersja]
+// jeśli nie została zmieniona lokalizacja
+// to domyślna jest w folderze 'Documents'
+// czyli po polsku w folderze 'Dokumenty'
+// [to samo dotyczy wcześniejszych 2 plików]
 
 disp(pwd()) // wyświetlenie katalogu bieżącego
 disp(dir()) // wyświetlenie zawartości tego katalogu
-type("dane.bin") // wyświetlenie zawartości pliku dane.bin (type dane.bin)
+disp(type("dane.bin")) // wyświetlenie zawartości pliku dane.bin (type dane.bin)
 
-delete("dane.bin") // usunięcie pliku dane.bin
+mdelete("dane.bin") // usunięcie pliku dane.bin
 cd("..") // cofnięcie się, przejście do katalogu nadrzędnego
 
-delete("TESTY") // usunięcie katalogu TESTY
+mdelete("TESTY") // usunięcie katalogu TESTY
 rmdir("TESTY")
-*/
 
 // zad_36 [zbiór zadań 1.1, 1.2, 1.3, 1.4, 1.5, 1.7]
 
