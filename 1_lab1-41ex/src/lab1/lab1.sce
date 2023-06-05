@@ -188,7 +188,128 @@ load("wynik.mat") // wczytanie zmiennych z pliku wyniki.mat
 disp(k, m) // sprawdzenie wartości zmiennych
 
 /*
-// zad_35 [dd]
+// zad_35 [wyświetl katalog bieżący, jego zawartość (pwd, dir);
+// zmień katalog bieżący (cd); utwórz podkatalog TESTY (md) i uczyń
+// go katalogiem bieżącym; utwórz zmienne x=12, y=14 i zapisz je
+// w katalogu bieżącym w pliku binarnym dane.bin; wyświetl katalog
+// bieżący, jego zawartość i zawartość pliku dane.bin (type dane.bin);
+// usuń plik dane.bin i katalog testy (deleted)]
 
-// www.scilab.org
+disp(pwd()) // wyświetlenie obecnego katalogu
+disp(dir()) // wyświetlenie zawartości katalogu
+
+cd("C:/Users/luqasz/Desktop") // zmiana katalogu bierzącego [opcja nr 1]
+// przy opcji nr1  musi być wpisana prawidłowa nazwa użytkownika komputera
+// cd("C:/Users/NazwaUzytkownika/Desktop") - zamiast słowa NazwaUzytkownika
+// należy wpisać swoją własną nazwę użytkownika na komputerze
+//cd("C:") // zmiana katalogu bierzącego [opcja nr 2]
+
+// sprawdzenie czy istnieje już katalog TESTY, a jeśli nie to
+// utworzenie w nowej lokalizacji podkatalogu TESTY
+if ~isdir("TESTY")
+    then mkdir("TESTY") end
+cd("TESTY") // uczynienie podkatalogu TESTY katalogiem bieżącym
+
+x=12, y=14 // utworzenie zmiennych x=12 i y=14
+//disp(x,y) // testowanie zmiennych
+
+// sprawdzenie, czy już istnieje plik i jest możliwość zapisu
+// bądź jeśli nie isnieje plik to wtedy utworzenie nowego
+// pliku dane.bin, a następnie zapisanie zmiennych
+// w katalogu w pliku binarnyum dane.bin
+if fileinfo("dane.bin") then
+    mput([x, y], "dane.bin", "int8");
+else
+    fileID = mopen("dane.bin", "wb");
+    if fileID == -1 then
+        error("Nie można otworzyć pliku do zapisu");
+    end
+    mput([x, y], fileID);
+    mclose(fileID);
+end
+
+//mput([x, y], "dane.bin", "int8") // zapisanie zmiennych z i y
+// w katalogu w pliku binarnyum dane.bin [krótka wersja]
+
+disp(pwd()) // wyświetlenie katalogu bieżącego
+disp(dir()) // wyświetlenie zawartości tego katalogu
+type("dane.bin") // wyświetlenie zawartości pliku dane.bin (type dane.bin)
+
+delete("dane.bin") // usunięcie pliku dane.bin
+cd("..") // cofnięcie się, przejście do katalogu nadrzędnego
+
+delete("TESTY") // usunięcie katalogu TESTY
+rmdir("TESTY")
 */
+
+// zad_36 [zbiór zadań 1.1, 1.2, 1.3, 1.4, 1.5, 1.7]
+
+// zadanie 1.1
+A=[2 -7; 5 4]
+//disp(A) // testowanie
+B=[6 1; 4 -3]
+//disp(B) // testowanie
+f=[4 1]
+//disp(f) // testowanie
+
+// zadanie 1.2 [a]
+disp(size(A)) // wyświetlenie rozmiaru macierzy A
+disp(size(f)) // wyświetlenie rozmiaru wektora f
+// zadanie 1.2 [b]
+BT = B' // transpozycja macierzy B
+disp(BT) // wyświetlenie transpozycji
+// zadanie 1.2 [c] [obliczenie wyrażenia: (A+B)^2 + 2*(A-B)]
+C=(A+B)^2 + 2*(A-B) // wykonanie obliczeń
+disp(C) // wyświetlenie wyniku z obliczeń
+// zadanie 1.2 [d]
+C=[[A] [B]] // utworzenie macierzy C
+h=[f f] // utworzenie wektora f
+//disp(C,h) // testowanie
+// zadanie 1.2 [e]
+disp(C*h') // obliczenie iloczynu C h
+
+// zadanie 1.3 [a]
+whos // wyświetlenie wszystkich zmiennych lokalnych
+// zadanie 1.3 [b]
+save("dane.mat") // zapisz zmienne w pliku dane
+// zadanie 1.3 [c]
+clear // usuń wszystkie zmienne lokalne
+// zadanie 1.3 [d]
+disp(dir()) // wyświetlenie zawartości katalogu roboczego
+
+// zadanie 1.4 [a]
+x=1:24 // utworzenie 24-elemntowego wektora x = [ 1 2 ... 24]
+disp(x) // wyświetlenie 24-elemtnowego wektora
+// zadanie 1.4 [b]
+Y=matrix(x,6,4) // utworzenie z wektora x macierz Y
+disp(Y) // wyświetlenie macierzy Y [o wymiarach 6x4]
+
+// zadanie 1.5 [a]
+A=exp(2)*sin(2*%pi) // obliczenie e^2sin(2pi)
+disp(A) // wyświetlenie obliczonego  wyniku
+// zadanie 1.5 [b]
+B=cos(%pi/3)^4 // obliczenie cos*(pi/3)^4
+disp(B) // wyświetlenie obliczonego wyniku
+// zadanie 1.5 [c]
+C=log(sqrt(5)) // obliczenie ln(pierwiastek z 5)
+disp(C) // wyświetlenie obliczonego wyniku
+
+// zadanie 1.7 [a]
+A=ones(3,4) // utworzenie macierzy o rozmiarze 3x4,
+// które mają wszystkie elementy równe 1 [ones]
+disp(A) // wyświetlenie utworzonej macierzy
+// zadanie 1.7 [b]
+B=zeros(3,4) // utworzenie macierzy o rozmiarze 3x4,
+// które mają wszystkie elementy równe 0 [zeros]
+disp(B) // wyświetlenie utworzonej macierzy
+// zadanie 1.7 [c]
+C=rand(3,4) // utworzenie macierzy o rozmiarze 3x4,
+// które jest wypełniona liczbami pseudolosowymi [rand]
+disp(C) // wyświetlenie utworzonej macierzy
+
+/*  => Imię i nazwisko: Łukasz Tworzydło
+    => Numer albumu: gd29623
+    => Nr. kierunku: INIS4_PR2.2
+
+    *** Scrilab 6.1.1
+    *** www.scilab.org*/
