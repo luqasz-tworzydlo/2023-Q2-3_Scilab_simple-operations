@@ -3,7 +3,7 @@
 // zadania będą rozwiązane poprzez użycie programu SciLab: Graphics
 
 // podniesienie limitu wyświetlania okien graficznych
-atomsSetConfig("graphics", "maxwin", 25)
+// atomsSetConfig("graphics", "maxwin", 25)
 // domyślny maksymalny limit to 16/17 figur, powyższa komenda
 // podnosi limit wyświetlania okien graficznych do 25 figur
 
@@ -209,9 +209,9 @@ y2 = [x.^2] // 12_b)
 plot(x2, y2, "+") // 12_b)
 plot(x2, y2, 'LineWidth', 2) // 12_b)
 legend("pomiary", "obliczenia") // 12_d)
-plot(x, y, "o")
-axis([0 6 0 40]) // 12_c)
-grid() // 12_e)
+//plot(x, y, "o")
+//axis([0 6 0 40]) // 12_c)
+//grid() // 12_e)
 
 // zad_13 [oblicz wartości macierzy dla z(x,y) = (x - 5)^2 - (y - 5)^2
 // dla x,y = 1,2, ... ,10; narysuj i porównaj wykresy funkcji z:
